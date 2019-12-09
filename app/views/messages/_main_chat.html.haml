@@ -1,0 +1,21 @@
+.chat-main
+  .header
+    .header__top-box
+      .header__top-box__group-name test
+      .header__top-box__member-list Member:
+    = link_to "#" do
+      .header__edit-btn Edit
+  .messages
+    .messages__top-box
+      .messages__top-box__username keiiwanaga
+      .messages__top-box__datetime 2019/12/08(Sun)21:55:01
+    .messages__message おはよう！
+
+  .form
+    .form__send-box
+      .form__send-box__send-items
+        %input.form__send-box__send-items__message
+        %label{class: "form__send-box__send-items__image-btn"}
+          = icon('fas', 'image')
+          %input{type: "file"} 
+    %input.form__send-box-btn{:type => "submit", :value => "Send"}
