@@ -1,13 +1,14 @@
 .side-bar
   .side-header
     .side-header__top-box
-      %p.side-header__top-box__user-name keiiwanaga
+      %p.side-header__top-box__user-name
+        = current_user.name
       %ul.side-header__top-box__icons
         %li.side-header__top-box__icons__edit-btn
           = link_to "#" do
             %i.fa.fa-edit.fa-fw
         %li.side-header__top-box__icons__setting-btn
-          = link_to "#" do
+          = link_to edit_user_path(current_user) do
             %i.fa.fa-cog.fa-fw
   .groups
     .gruop-block
