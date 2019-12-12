@@ -1,21 +1,21 @@
 .chat-main
   .header
     .header__top-box
-      .header__top-box__group-name test
-      .header__top-box__member-list Member:
-    = link_to "#" do
+      .header__top-box__group-name 
+        = @group.name
+      .header__top-box__member-list
+        = "Member:" 
+        - @group.users.each do |user|
+          = user.name
+    = link_to edit_group_path(@group) do
       .header__edit-btn Edit
   .messages
-    .messages__top-box
-      .messages__top-box__username keiiwanaga
-      .messages__top-box__datetime 2019/12/08(Sun)21:55:01
-    .messages__message おはよう！
-
+    = render @messages
   .form
-    .form__send-box
-      .form__send-box__send-items
-        %input.form__send-box__send-items__message
-        %label{class: "form__send-box__send-items__image-btn"}
-          = icon('fas', 'image')
-          %input{type: "file"} 
-    %input.form__send-box-btn{type: "submit", value: "Send"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'new_message__message', placeholder: 'type a message'
+      .new_message__mask
+        = f.label :image, class: 'new_message__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'new_message__submit'
