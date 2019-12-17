@@ -26,11 +26,8 @@ $(function(){
     $(".js-add-user").append(html);
   }
   function addMember(userId) {
-    console.log(userId)
     var html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
     $(`#${userId}`).append(html);
-    console.log($(`#${userId}`))
-    console.log($("#1"))
   }
   $('#user-search-field').on("keyup", function(){
     var input = $("#user-search-field").val();
